@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Ninja&display=swap');
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Ninja', sans-serif;
+    overflow: hidden;
+}
+
+/* Estilos de la tarjeta */
+.card {
+    background: linear-gradient(to right, #ff0000, #000);
+    color: white;
+    width: 350px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.7);
+    position: relative;
+}
+
+/* Efecto de fuego */
+.card::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 150%;
+    background: url('https://i.gifer.com/origin/d5/d5d4fd07c6b7719c7eb5cbf98d2b6cfb_w200.gif');
+    background-size: cover;
+    top: -40px;
+    left: -10%;
+    opacity: 0.5;
+    z-index: -1;
+    animation: flicker 1s infinite alternate;
+}
+
+/* Animación de fuego */
+@keyframes flicker {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
+
+/* Imagen */
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Frases con parpadeo */
+#phrase {
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Botón */
+button {
+    background: black;
+    color: red;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: red;
+    color: white;
+}
+
+/* Animación de cuervos */
+.crow {
+    position: absolute;
+    width: 50px;
+    animation: fly 5s linear infinite;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateX(-100px) translateY(50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(120vw) translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Media Query para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    /* Ajustes para cuervos en pantallas pequeñas */
+    .crow {
+        width: 40px; /* Cuervos más pequeños */
+        animation-duration: 3s; /* Velocidad de los cuervos más rápida */
+    }
+
+    /* Ajustes para la tarjeta */
+    .card {
+        width: 90%; /* Hacer la tarjeta más ancha en móviles */
+        padding: 15px; /* Reducir el padding en móviles */
+    }
+
+    /* Ajustes en la imagen */
+    .image-container img {
+        width: 100%; /* Asegura que las imágenes se ajusten al contenedor */
+    }
+
+    /* Ajustes del botón */
+    button {
+        width: 100%; /* Hacer el botón más ancho */
+        padding: 15px; /* Aumentar el tamaño del botón en móviles */
+    }
+}
